@@ -75,7 +75,7 @@ class WasteClassifier(object):
         subsets = ['train', 'valid', 'test']
         waste_types = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
-        # create destination folders for analyisis subset and waste type
+        # create destination folders for analysis subset and waste type
         for subset in subsets:
             for waste_type in waste_types:
                 folder = os.path.join('data', subset, waste_type)
@@ -93,20 +93,20 @@ class WasteClassifier(object):
             # move source files to train
             train_names = self.get_names(waste_type, train_ind)
             train_source_files = [os.path.join(source_folder, name) for name in train_names]
-            train_dest = "analyisis/train/" + waste_type
+            train_dest = "analysis/train/" + waste_type
             self.move_files(train_source_files, train_dest)
 
             # move source files to valid
             valid_names = self.get_names(waste_type, valid_ind)
             valid_source_files = [os.path.join(source_folder, name) for name in valid_names]
-            valid_dest = "analyisis/valid/" + waste_type
+            valid_dest = "analysis/valid/" + waste_type
             self.move_files(valid_source_files, valid_dest)
 
             # move source files to test
             test_names = self.get_names(waste_type, test_ind)
             test_source_files = [os.path.join(source_folder, name) for name in test_names]
-            test_dest = "analyisis/test/" + waste_type
-            # I use analyisis/test here because the images can be mixed up
+            test_dest = "analysis/test/" + waste_type
+            # I use analysis/test here because the images can be mixed up
             self.move_files(test_source_files, test_dest)
 
 
