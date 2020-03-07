@@ -5,19 +5,20 @@
 
 # %config InlineBackend.figure_format = 'retina'
 
-from fastai.vision import *
-from fastai.metrics import error_rate
+#from fastai.vision import *
+#from fastai.metrics import error_rat
 from pathlib import Path
-from glob2 import glob
-from sklearn.metrics import confusion_matrix
+#from glob2 import glob
+#from sklearn.metrics import confusion_matrix
 
-import pandas as pd
+#import pandas as pd
 import numpy as np
+import random
 import os
 import zipfile as zf
 import shutil
 import re
-import seaborn as sns
+#import seaborn as sns
 
 class WasteClassifier(object):
 
@@ -37,19 +38,20 @@ class WasteClassifier(object):
     ## input: folder path
     ## output: train, valid, and test indices
 
-    def split_indices(self, folder):    
+    def split_indices(self, folder):
+        print('sex')    
         n = len(os.listdir(folder))
         full_set = list(range(1,n+1))
 
         ## train indices
-        random.seed()
+        random.seed(1)
         train = random.sample(list(range(1,n+1)),int(.5*n))
 
         ## temp
         remain = list(set(full_set)-set(train))
 
         ## separate remaining into validation and test
-        random.seed()
+        random.seed(1)
         valid = random.sample(remain,int(.5*len(remain)))
         test = list(set(remain)-set(valid))
     
@@ -58,14 +60,14 @@ class WasteClassifier(object):
     ## gets file names for a particular type of trash, given indices
     ## input: waste category and indices
     ## output: file names 
-    def get_names(waste_type,indices):
+    def get_names(self, waste_type,indices):
         file_names = [waste_type+str(i)+".jpg" for i in indices]
         return(file_names)    
 
     ## moves group of source files to another folder
     ## input: list of source files and destination folder
     ## no output
-    def move_files(source_files,destination_folder):
+    def move_files(self, source_files, destination_folder):
         for file in source_files:
             shutil.move(file,destination_folder)
 
@@ -90,38 +92,40 @@ class WasteClassifier(object):
         ## move files to destination folders for each waste type
         for waste_type in waste_types:
             source_folder = os.path.join('dataset-resized',waste_type)
-            train_ind, valid_ind, test_ind = split_indices(source_folder,1,1)
+            train_ind, valid_ind, test_ind = self.split_indices(source_folder)
     
             ## move source files to train
-            train_names = get_names(waste_type,train_ind)
+            train_names = self.get_names(waste_type,train_ind)
             train_source_files = [os.path.join(source_folder,name) for name in train_names]
             train_dest = "data/train/"+waste_type
-            move_files(train_source_files,train_dest)
+            self.move_files(train_source_files,train_dest)
     
             ## move source files to valid
-            valid_names = get_names(waste_type,valid_ind)
+            valid_names = self.get_names(waste_type,valid_ind)
             valid_source_files = [os.path.join(source_folder,name) for name in valid_names]
             valid_dest = "data/valid/"+waste_type
-            move_files(valid_source_files,valid_dest)
+            self.move_files(valid_source_files,valid_dest)
     
             ## move source files to test
-            test_names = get_names(waste_type,test_ind)
+            test_names = self.get_names(waste_type,test_ind)
             test_source_files = [os.path.join(source_folder,name) for name in test_names]
             ## I use data/test here because the images can be mixed up
-            move_files(test_source_files,"data/test")
+            self.move_files(test_source_files,"data/test")
 
 def main():
+    print('sex')
     classifier = WasteClassifier()
 
     classifier.extractFile()
     path = Path(os.getcwd())/"data"
-   
+    
     train, valid, test = classifier.split_indices(path)
     print(train)
     print(valid)
     print(test)
 
-    tfms = get_transforms(do_flip=True, flip_vert=True)
-    data = ImageDataBunch.from_folder(path, test='test', ds_tfms=tfms, bs=16)
-    print(data.classes)
+main()
 
+    #tfms = get_transforms(do_flip=True, flip_vert=True)
+    #data = ImageDataBunch.from_folder(path, test='test', ds_tfms=tfms, bs=16)
+    #print(data.classes)
