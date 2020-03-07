@@ -19,12 +19,11 @@ import re
 class WasteClassifier(object):
 
     @staticmethod
-    def extractFile(self):
+    def extractFile():
         # need to feed it zipfile
         files = zf.ZipFile("dataset-resized.zip", 'r')
         files.extractall()
         files.close()
-        os.listdir(os.path.join(os.getcwd(), "dataset-resized"))
 
     # helper functions #
 
@@ -33,9 +32,9 @@ class WasteClassifier(object):
     # output: train, valid, and test indices
 
     @staticmethod
-    def split_indices(self, folder):
-        print('sex')
-        n = len(os.listdir(folder))
+    def split_indices(folder):
+        list1 = os.listdir(folder)
+        n = len(list1)
         full_set = list(range(1, n + 1))
 
         # train indices
@@ -50,16 +49,16 @@ class WasteClassifier(object):
         valid = random.sample(remain, int(.5 * len(remain)))
         test = list(set(remain) - set(valid))
 
-        return (train, valid, test)
+        return train, valid, test
 
     # gets file names for a particular type of trash, given indices
     # input: waste category and indices
     # output: file names
 
     @staticmethod
-    def get_names(self, waste_type, indices):
+    def get_names(waste_type, indices):
         file_names = [waste_type + str(i) + ".jpg" for i in indices]
-        return (file_names)
+        return file_names
 
         # moves group of source files to another folder
 
@@ -67,13 +66,13 @@ class WasteClassifier(object):
     # no output
 
     @staticmethod
-    def move_files(self, source_files, destination_folder):
+    def move_files(source_files, destination_folder):
         for file in source_files:
             shutil.move(file, destination_folder)
 
     def makeFolder(self):
         # paths will be train/cardboard, train/glass, etc...
-        subsets = ['train', 'valid']
+        subsets = ['train', 'valid', 'test']
         waste_types = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
         # create destination folders for data subset and waste type
@@ -106,19 +105,19 @@ class WasteClassifier(object):
             # move source files to test
             test_names = self.get_names(waste_type, test_ind)
             test_source_files = [os.path.join(source_folder, name) for name in test_names]
+            test_dest = "data/test/" + waste_type
             # I use data/test here because the images can be mixed up
-            self.move_files(test_source_files, "data/test")
+            self.move_files(test_source_files, test_dest)
 
 
 if __name__ == "__main__":
-    print('sex')
     classifier = WasteClassifier()
 
     classifier.extractFile()
-    path = Path(os.getcwd()) / "data"
+    path = Path(os.getcwd())
+    print(os.listdir(os.path.join(os.getcwd(), "dataset-resized")))
 
-    train, valid, test = classifier.split_indices(path)
-    print(train)
-    print(valid)
-    print(test)
+    train, valid, test = classifier.split_indices("dataset-resized")
+
+    classifier.makeFolder()
 
