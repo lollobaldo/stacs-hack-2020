@@ -25,34 +25,12 @@ def SetAngle(angle):
 	GPIO.output(3, False)
 	pwm.ChangeDutyCycle(0)
 
-SetAngle(90) 
-sleep(1)
 SetAngle(0)
-sleep(1)
+sleep(5)
 SetAngle(180)
+# SetAngle(0)
+# sleep(1)
+# SetAngle(180)
 
 pwm.stop()
 GPIO.cleanup()
-
-# try:
-#   while True:
-#     print("Run cycle")
-#     p.ChangeDutyCycle(5)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(7.5)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(10)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(12.5)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(10)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(7.5)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(5)
-#     time.sleep(0.5)
-#     p.ChangeDutyCycle(2.5)
-#     time.sleep(0.5)
-# except KeyboardInterrupt:
-#   p.stop()
-#   GPIO.cleanup()
