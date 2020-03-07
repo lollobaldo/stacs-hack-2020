@@ -9,9 +9,9 @@ from time import sleep #import time
 # p.start(2.5) # Initialization
 print("Setting up")
 
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.OUT)
 # Now setup PWM on pin #3 at 50Hz
-
 pwm=GPIO.PWM(3, 50)
 # Then start it with 0 duty cycle so it doesn't set any angles on startup
 
