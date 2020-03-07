@@ -4,7 +4,7 @@ import 'tabs/1_dashboard.dart';
 void main() {
   runApp(MaterialApp(
     // Title
-      title: "Using Tabs",
+      title: "iCan",
       // Home
       home: MyHome()));
 }
@@ -42,13 +42,13 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       tabs: <Tab>[
         Tab(
           // set icon to the tab
-          icon: Icon(Icons.favorite),
+          icon: Icon(Icons.dashboard),
         ),
         Tab(
-          icon: Icon(Icons.adb),
+          icon: Icon(Icons.map),
         ),
         Tab(
-          icon: Icon(Icons.airport_shuttle),
+          icon: Icon(Icons.person),
         ),
       ],
       // setup the controller
@@ -74,7 +74,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       // Appbar
         appBar: AppBar(
           // Title
-            title: Text("Using Tabs"),
+            title: Text("iCan"),
             // Set the background color of the App Bar
             backgroundColor: Colors.blue,
             // Set the bottom property of the Appbar to include a Tab Bar
