@@ -3,8 +3,8 @@ from time import sleep             # lets us have a delay
 GPIO.setmode(GPIO.BCM)             # choose BCM or BOARD  
 GPIO.setup(17, GPIO.OUT)           # set GPIO24 as an output   
 
-GPIO.output(17, 1)
-sleep(100)                 # wait half a second  
+# GPIO.output(17, 1)
+# sleep(100)                 # wait half a second  
 
 try:  
     while True:
