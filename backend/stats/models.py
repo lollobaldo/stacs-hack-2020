@@ -4,17 +4,24 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-    name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, primary_key=True)
+    password = models.CharField(max_length=50)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # Stats
 
-class Stats(models.Model):
-    plastic = models.FloatField()
-    glass = models.FloatField()
-    metal = models.FloatField()
-    trash = models.FloatField()
-    paper = models.FloatField()
-    cardboard = models.FloatField()
+    plastic = models.FloatField(blank=True, null=True)
+    glass = models.FloatField(blank=True, null=True)
+    metal = models.FloatField(blank=True, null=True)
+    trash = models.FloatField(blank=True, null=True)
+    paper = models.FloatField(blank=True, null=True)
+    cardboard = models.FloatField(blank=True, null=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    score = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['username']
+
+
+
