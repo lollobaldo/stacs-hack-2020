@@ -11,7 +11,7 @@ __pycache__/
 
 backend/analysis/__MACOSX/
 backend/analysis/.ipynb_checkpoints/
-
+backend/analysis/dataset-resized/
 
 # Distribution / packaging
 bin/
