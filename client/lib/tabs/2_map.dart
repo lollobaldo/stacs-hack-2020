@@ -22,6 +22,14 @@ class MapSampleState extends State<MapSample> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
+        markers: {
+          Marker(
+            markerId: MarkerId('St Andrews Bin 1'),
+            position: LatLng(56.3399447, -2.8094218),
+            infoWindow: InfoWindow(title: 'St Andrews Bin 1'),
+            icon: BitmapDescriptor.defaultMarkerWithHue( BitmapDescriptor.hueViolet,)
+          )
+        },
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToUser,
