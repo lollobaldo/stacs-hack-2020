@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'tabs/1_dashboard.dart';
+import 'tabs/2_map.dart';
+import 'tabs/3_userlist.dart';
 
 void main() {
   runApp(MaterialApp(
     // Title
       title: "iCan",
       // Home
-      home: MyHome()));
+      home: MyHome(),
+      theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
+    ));
 }
 
 class MyHome extends StatefulWidget {
@@ -76,10 +80,11 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           // Title
             title: Text("iCan"),
             // Set the background color of the App Bar
-            backgroundColor: Colors.blue,
+            // backgroundColor: Colors.blue,
+            backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
             // Set the bottom property of the Appbar to include a Tab Bar
             bottom: getTabBar()),
         // Set the TabBar view as the body of the Scaffold
-        body: getTabBarView(<Widget>[First(), First(), First()]));
+        body: getTabBarView(<Widget>[First(), MapSample(), Third()]));
   }
 }
