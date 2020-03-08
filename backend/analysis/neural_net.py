@@ -46,16 +46,6 @@ class NN:
 
 if __name__ == "__main__":
     nn = NN()
-    for path in os.listdir('data/Stacs')[:20]:
-        t = time()
-        print(path)
-        full_path = 'data/Stacs/' + path
-
-        print("Loading image")
-
-        print("Predicting")
-
-        print(nn.model.predict(nn.load_image(full_path)))
-        print(time() - t)
+    print(nn.model.predict(nn.load_image('data/train/photoBottle/000.jpg')))
 
     #
