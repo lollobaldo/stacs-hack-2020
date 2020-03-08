@@ -118,5 +118,4 @@ if __name__ == "__main__":
 
     train, valid, test = classifier.split_indices("dataset-resized")
 
-    classifier.makeFolder()
 
