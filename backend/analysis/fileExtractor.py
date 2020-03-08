@@ -73,7 +73,7 @@ class WasteClassifier(object):
     def makeFolder(self):
         # paths will be train/cardboard, train/glass, etc...
         subsets = ['train', 'valid', 'test']
-        waste_types = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+        waste_types = ['glass', 'metal', 'paper', 'plastic', 'trash']
 
         # create destination folders for analysis subset and waste type
         for subset in subsets:
@@ -119,4 +119,3 @@ if __name__ == "__main__":
     train, valid, test = classifier.split_indices("dataset-resized")
 
     classifier.makeFolder()
-
