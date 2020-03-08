@@ -56,8 +56,8 @@ class WasteClassifier(object):
     # output: file names
 
     @staticmethod
-    def get_names(waste_type, indices):
-        file_names = [waste_type + str(i) + ".jpg" for i in indices]
+    def get_names(indices):
+        file_names = [str(i) + ".jpg" for i in indices]
         return file_names
 
         # moves group of source files to another folder
@@ -73,7 +73,7 @@ class WasteClassifier(object):
     def makeFolder(self):
         # paths will be train/cardboard, train/glass, etc...
         subsets = ['train', 'valid', 'test']
-        waste_types = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+        waste_types = ['photosPaper', 'photosCan', 'photosApple', 'photoBottle']
 
         # create destination folders for analysis subset and waste type
         for subset in subsets:
@@ -87,23 +87,23 @@ class WasteClassifier(object):
 
         # move files to destination folders for each waste type
         for waste_type in waste_types:
-            source_folder = os.path.join('dataset-resized', waste_type)
+            source_folder = os.path.join('data', waste_type)
             train_ind, valid_ind, test_ind = self.split_indices(source_folder)
 
             # move source files to train
-            train_names = self.get_names(waste_type, train_ind)
+            train_names = self.get_names(train_ind)
             train_source_files = [os.path.join(source_folder, name) for name in train_names]
             train_dest = "data/train/" + waste_type
             self.move_files(train_source_files, train_dest)
 
             # move source files to valid
-            valid_names = self.get_names(waste_type, valid_ind)
+            valid_names = self.get_names(valid_ind)
             valid_source_files = [os.path.join(source_folder, name) for name in valid_names]
             valid_dest = "data/valid/" + waste_type
             self.move_files(valid_source_files, valid_dest)
 
             ## move source files to test
-            test_names = self.get_names(waste_type, test_ind)
+            test_names = self.get_names(test_ind)
             test_source_files = [os.path.join(source_folder, name) for name in test_names]
             ## I use data/test here because the images can be mixed up
             self.move_files(test_source_files, "data/test")
@@ -114,9 +114,7 @@ if __name__ == "__main__":
 
     classifier.extractFile()
     path = Path(os.getcwd())/"data"
-    print(os.listdir(os.path.join(os.getcwd(), "dataset-resized")))
 
-    train, valid, test = classifier.split_indices("dataset-resized")
+    train, valid, test = classifier.split_indices("data")
 
     classifier.makeFolder()
-
