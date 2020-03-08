@@ -9,6 +9,11 @@ __pycache__/
 # C extensions
 *.so
 
+backend/analysis/__MACOSX/
+backend/analysis/dataset-resized
+backend/analysis/.ipynb_checkpoints/
+
+
 # Distribution / packaging
 bin/
 build/
