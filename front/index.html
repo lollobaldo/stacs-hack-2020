@@ -5,12 +5,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script>
-    const client = mqtt.connect({
-        host: '',
-        port: 1883,
-        username: 'username',
-        password: 'password'
-    });
+    // const client = mqtt.connect({
+    //     host: 'm21.cloudmqtt.com',
+    //     port: 16973,
+    //     username: 'bisavwqs',
+    //     password: 'gspBl5b8VeTt'
+    // });
+
+    const client = mqtt.connect("mqtts://bisavwqs:gspBl5b8VeTt@m21.cloudmqtt.com:16973")
 
     client.subscribe("mqtt/demo")
   
