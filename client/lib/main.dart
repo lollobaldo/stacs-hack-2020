@@ -85,6 +85,6 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
             // Set the bottom property of the Appbar to include a Tab Bar
             bottom: getTabBar()),
         // Set the TabBar view as the body of the Scaffold
-        body: getTabBarView(<Widget>[First(), HomePage(), Third()]));
+        body: getTabBarView(<Widget>[First(), MapSample(), Third()]));
   }
 }
