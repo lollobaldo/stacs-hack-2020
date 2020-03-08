@@ -93,28 +93,27 @@ class WasteClassifier(object):
             # move source files to train
             train_names = self.get_names(waste_type, train_ind)
             train_source_files = [os.path.join(source_folder, name) for name in train_names]
-            train_dest = "analysis/train/" + waste_type
+            train_dest = "data/train/" + waste_type
             self.move_files(train_source_files, train_dest)
 
             # move source files to valid
             valid_names = self.get_names(waste_type, valid_ind)
             valid_source_files = [os.path.join(source_folder, name) for name in valid_names]
-            valid_dest = "analysis/valid/" + waste_type
+            valid_dest = "data/valid/" + waste_type
             self.move_files(valid_source_files, valid_dest)
 
-            # move source files to test
+            ## move source files to test
             test_names = self.get_names(waste_type, test_ind)
             test_source_files = [os.path.join(source_folder, name) for name in test_names]
-            test_dest = "analysis/test/" + waste_type
-            # I use analysis/test here because the images can be mixed up
-            self.move_files(test_source_files, test_dest)
+            ## I use data/test here because the images can be mixed up
+            self.move_files(test_source_files, "data/test")
 
 
 if __name__ == "__main__":
     classifier = WasteClassifier()
 
     classifier.extractFile()
-    path = Path(os.getcwd())
+    path = Path(os.getcwd())/"data"
     print(os.listdir(os.path.join(os.getcwd(), "dataset-resized")))
 
     train, valid, test = classifier.split_indices("dataset-resized")
