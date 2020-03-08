@@ -3,6 +3,31 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script>
+    const client = mqtt.connect({
+        host: '',
+        port: 1883,
+        username: 'username',
+        password: 'password'
+    });
+
+    client.subscribe("mqtt/demo")
+  
+    client.on("message", function (topic, payload) {
+      alert([topic, payload].join(": "))
+      client.end()
+    })
+  
+    client.publish("mqtt/demo", "hello world!")
+</script>
+<style>
+    body { height: 100%; }
+    .prog {
+        height: 100%;
+        width: 100%;
+    }
+</style>
 <body>
 
 <header class="w3-container w3-teal">
@@ -10,7 +35,9 @@
   <h3>Make a difference</h3>
 </header>
 
-
+<div class="w3-container prog">
+    70%
+</div>
 
 <footer class="w3-container w3-teal">
   <h5>Footer</h5>
