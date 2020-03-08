@@ -1,0 +1,34 @@
+.card {
+  margin: 16px 8px;
+  width: 100px;
+  // width: 100px;
+  height: 100px;
+  // flex-basis: 30%;
+  border-radius: 20%;
+  background: white;
+  padding: 10px;
+
+  &.cardicon {
+    display: flex;
+  }
+
+  & .card-icon {
+    // color: yellow;
+  }
+
+  & .cardicon-icon {
+    margin: auto;
+    width: 75%;
+    height: 75%;
+  }
+
+  & h4 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  & p{
+    margin: 0;
+    color: #888;
+  }
+}

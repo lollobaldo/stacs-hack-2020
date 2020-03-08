@@ -1,0 +1,46 @@
+$transparent: rgba(0, 0, 0, 0);
+$red: #FF6961;
+$yellow: #FFFD96;
+$orange: #FFB447;
+$light-green: #CEFC86;
+$green: #77DD77;
+$light-blue: #A1C9F1;
+$blue: #018AE6;
+$purple: #B29DD9;
+
+$red-gradient1: linear-gradient(45deg, #ff416c, #ff4b2b);
+$red-gradient2: linear-gradient(45deg, #f85032, #e73827);
+$red-gradient3: linear-gradient(45deg, #eb3349, #f45c43);
+$red-gradient4: linear-gradient(45deg, #ff416c, #f45c43);
+
+$yellow-gradient1: linear-gradient(45deg, #fdc830, #f37335);
+$yellow-gradient2: linear-gradient(45deg, #fdc830, #ffffff);
+$yellow-gradient3: linear-gradient(45deg, #f37335, #ffffff);
+
+$purple-gradient1: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+$purple-gradient2: linear-gradient(45deg, #7f00ff, #e100ff);
+$purple-gradient3: linear-gradient(45deg, #ff00cc, #333399);
+$purple-gradient4: linear-gradient(45deg, #da22ff, #9733ee);
+
+$black-gradient1: linear-gradient(45deg, #232526, #414345);
+$black-gradient2: linear-gradient(45deg, #2c3e50, #3498db);
+
+:export {
+  red: $red;
+  yellow: $yellow;
+  orange: $orange;
+  greenLight: $light-green;
+  green: $green;
+  blueLight: $light-blue;
+  blue: $blue;
+  purple: $purple;
+
+  redG: $red-gradient4;
+  yellowG: $yellow-gradient1;
+  purpleG: $purple-gradient1;
+  blackG: $black-gradient1;
+}
+
+$bg1: linear-gradient(180deg, #0052d4, #4364f7, #6fb1fc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$bg2: linear-gradient(180deg, #1488cc, #2b32b2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$bg3: linear-gradient(180deg, #4776e6, #8e54e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */

@@ -1,0 +1,52 @@
+/*
+ * Footer scss File
+*/
+
+.Footer {
+  // height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+
+  & > button {
+    color: #aaa;
+    border: 0;
+    outline: 0;
+    width: 20%;
+    background: white;
+    position: relative;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 25%;
+
+    & a {
+      filter: invert(100%) brightness(67%);
+    }
+
+    & .active {
+      filter: none !important;
+    }
+
+    & img {
+      height: 32px;
+    }
+  }
+
+  & > button:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12.5%;
+    width: 1px;
+    height: 75%;
+    background-color:#aaa;
+  }
+}

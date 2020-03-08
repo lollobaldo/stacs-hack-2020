@@ -1,0 +1,62 @@
+.plants-moisture-bar {
+  height: 15px;
+  width: 65%;
+  float: right;
+  position: relative;
+
+  &:after {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(255, 0, 255, 0);
+    border-bottom-color: #ff00ff;
+    border-width: 15px;
+    margin-left: -15px;
+  }
+}
+
+.plant-item {
+  // border: 2px solid #ccc;
+  // background-color: #eee;
+  // border-radius: 5px;
+  border-bottom: 1px solid #999;
+  padding: 16px;
+  // margin: 16px 0
+}
+
+.plant-item::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.plant-item img {
+  float: left;
+  margin-right: 20px;
+  // margin: auto;
+  border-radius: 50%;
+}
+
+.plant-item span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+  .plant-item {
+      text-align: center;
+  }
+  .plant-item img {
+      margin: auto;
+      float: left;
+      display: block;
+  }
+}

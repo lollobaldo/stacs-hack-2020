@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700&display=swap');
+* {
+  box-sizing: border-box;
+  // font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html, body, #app {height: 100%;overscroll-behavior: contain;}
+
+body {
+  // overscroll-behavior: contain;
+  margin: 0;
+  background: #F5F5F5;
+  overflow: hidden;
+}

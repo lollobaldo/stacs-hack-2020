@@ -1,0 +1,36 @@
+@import 'constants/constants.scss';
+
+header {
+  z-index: 10;
+  height: 70px;
+  // border-radius: 0% 0% 150% 150%/0% 0% 30% 30%;
+  // background: linear-gradient(45deg, #FF4E50 30%, #f9d423 90%);
+  // background: linear-gradient(200deg, #FF512F 30%, #F09819 90%);
+  // background: linear-gradient(200deg, $pastel-red 30%, $pastel-orange 90%);
+  // border-radius: 0 0 20px 20px;
+  background: #fff;
+  color: #000;
+
+  & p {
+    // display: inline;
+    margin: 0;
+  }
+
+  & .icon-back {
+    height: 1.5em;
+    margin-right: 16px;
+  }
+
+  & span {
+    vertical-align: middle;
+  }
+}
+
+.user-icon {
+  // position: absolute;
+  // right: 16px;
+  // top: 16px;
+  float: right;
+  width: 1.5em;
+  border-radius: 100%;
+}
