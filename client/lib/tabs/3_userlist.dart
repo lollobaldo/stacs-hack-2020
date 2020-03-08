@@ -56,7 +56,6 @@ final makeCard = (profile) => Card(
           decoration: new BoxDecoration(
               border: new Border(
                   right: new BorderSide(width: 1.0, color: Colors.white24))),
-          // child: Icon(Icons.autorenew, color: Colors.white),
           child: CircleAvatar(backgroundImage: NetworkImage(profile['picURL'])),
         ),
         title: Text(
@@ -71,9 +70,9 @@ final makeCard = (profile) => Card(
             Text(" ${profile['points']} Points", style: TextStyle(color: Colors.white))
           ],
         ),
-        trailing:
-            Icon(Icons.score,
-            color: Colors.white, size: 30.0)
+      //   trailing:
+      //       Icon(Icons.score,
+      //       color: Colors.white, size: 30.0)
       )
   ),
 );
