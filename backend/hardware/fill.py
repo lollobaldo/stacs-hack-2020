@@ -14,7 +14,7 @@ GPIO.output(TRIG, False)
 
 print ("Waiting For Sensor To Settle")
 
-time.sleep(4)
+time.sleep(2)
 
 GPIO.output(TRIG, True)
 
@@ -36,6 +36,6 @@ distance = pulse_duration*17150.
 
 distance = round(distance, 2)
 
-print ("Distance:" + distance + "cm")
+print ("Distance:" + str(distance) + "cm")
 p.stop()
 GPIO.cleanup()
