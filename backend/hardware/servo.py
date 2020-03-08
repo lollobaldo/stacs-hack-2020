@@ -1,30 +1,61 @@
-import RPi.GPIO as GPIO
+#!/usr/bin/env python
+
 import time
 
-servoPIN = 17
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN, GPIO.OUT)
+import pigpio
 
-p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
-p.start(2.5) # Initialization
+pi = pigpio.pi() # Connect to local Pi.
+
+# pi.set_servo_pulsewidth(18, 500)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 750)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1000)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1250)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1500)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1750)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 2000)
+# time.sleep(1)
+
+def throwLeft():
+	print("Throwing left.")
+	pi.set_servo_pulsewidth(18, 500)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
+
+def throwRight():
+	print("Throwing right.")
+	pi.set_servo_pulsewidth(18, 2000)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
+
+
 try:
-  while True:
-    p.ChangeDutyCycle(5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(7.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(10)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(12.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(10)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(7.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(2.5)
-    time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
+	while (True):
+		side = input("Select side: ")
+		if side == "l":
+			throwLeft()
+		elif side == "r":
+			throwRight()
+		else:
+			print("Input valid side.")
 except KeyboardInterrupt:
-  p.stop()
-  GPIO.cleanup()
+	pwm.stop()
+	GPIO.cleanup()
+
+
+# switch servo off
+pi.set_servo_pulsewidth(18, 0)
+
+pi.stop()
