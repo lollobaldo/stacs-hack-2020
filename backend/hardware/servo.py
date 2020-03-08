@@ -1,37 +1,61 @@
-import RPi.GPIO as GPIO
-from time import sleep #import time
+#!/usr/bin/env python
 
-# servoPIN = 17
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(servoPIN, GPIO.OUT)
+import time
 
-# p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
-# p.start(2.5) # Initialization
-print("Setting up")
+import pigpio
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(3, GPIO.OUT)
-# Now setup PWM on pin #3 at 50Hz
-pwm=GPIO.PWM(3, 50)
-# Then start it with 0 duty cycle so it doesn't set any angles on startup
+pi = pigpio.pi() # Connect to local Pi.
 
-pwm.start(0)
+# pi.set_servo_pulsewidth(18, 500)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 750)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1000)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1250)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1500)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 1750)
+# time.sleep(1)
+# pi.set_servo_pulsewidth(18, 2000)
+# time.sleep(1)
 
-def SetAngle(angle):
-	duty = angle / 18 + 2
-	GPIO.output(3, True)
-	pwm.ChangeDutyCycle(duty)
-	sleep(1)
-	GPIO.output(3, False)
-	pwm.ChangeDutyCycle(0)
+def throwLeft():
+	print("Throwing left.")
+	pi.set_servo_pulsewidth(18, 500)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
 
-SetAngle(0)
-sleep(5)
-SetAngle(90)
-sleep(5)
-# SetAngle(0)
-# sleep(1)
-# SetAngle(180)
+def throwRight():
+	print("Throwing right.")
+	pi.set_servo_pulsewidth(18, 2000)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
 
-pwm.stop()
-GPIO.cleanup()
+
+try:
+	pi.set_servo_pulsewidth(18, 1250)
+	time.sleep(0.5)
+	pi.set_servo_pulsewidth(18, 0)
+	while (True):
+		side = input("Select side: ")
+		if side == "l":
+			throwLeft()
+		elif side == "r":
+			throwRight()
+		else:
+			print("Input valid side.")
+except KeyboardInterrupt:
+	pwm.stop()
+	GPIO.cleanup()
+
+
+# switch servo off
+pi.set_servo_pulsewidth(18, 0)
+
+pi.stop()
