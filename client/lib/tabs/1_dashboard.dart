@@ -5,10 +5,10 @@ class First extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<ChartData> chartData = [
-        ChartData('David', 25, Color.fromRGBO(9,0,136,1)),
-        ChartData('Steve', 38, Color.fromRGBO(147,0,119,1)),
-        ChartData('Jack', 34, Color.fromRGBO(228,0,124,1)),
-        ChartData('Others', 52, Color.fromRGBO(255,189,57,1))
+        ChartData('Plastic', 25, Color.fromRGBO(9,0,136,1)),
+        ChartData('Food', 38, Color.fromRGBO(147,0,119,1)),
+        ChartData('Can', 34, Color.fromRGBO(228,0,124,1)),
+        ChartData('Paper', 52, Color.fromRGBO(255,189,57,1))
     ];
     return Scaffold(
         body: Center(
@@ -20,7 +20,9 @@ class First extends StatelessWidget {
                             dataSource: chartData,
                             pointColorMapper:(ChartData data,  _) => data.color,
                             xValueMapper: (ChartData data, _) => data.x,
-                            yValueMapper: (ChartData data, _) => data.y
+                            yValueMapper: (ChartData data, _) => data.y,
+                            dataLabelMapper: (ChartData data, _) => data.x,
+                            dataLabelSettings: DataLabelSettings(isVisible: true)
                         )
                     ]
                 )
