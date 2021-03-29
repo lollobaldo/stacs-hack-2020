@@ -59,7 +59,7 @@ preshed==3.0.2
 prometheus-client==0.7.1
 prompt-toolkit==3.0.4
 ptyprocess==0.6.0
-Pygments==2.5.2
+Pygments==2.7.4
 pynvx==1.0.0
 pyparsing==2.4.6
 pyrsistent==0.15.7
